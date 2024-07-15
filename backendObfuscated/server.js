@@ -10,12 +10,12 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
 // Get the database connection string from environment variables
-let DB = process.env.DATABASE_LOCAL;
+let DB = process.env.DATABASE_ATLAS;
 
 console.log(DB);
 
 // Connect to the database
-mongoose
+const connection = mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -28,7 +28,9 @@ mongoose
   });
 
 // Start the server
-const port = 8000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`App Running on port: ${port}`);
 });
+
+module.exports = { connection };
