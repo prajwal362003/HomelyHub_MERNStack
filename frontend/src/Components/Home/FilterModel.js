@@ -43,7 +43,7 @@ const FilterModel = ({ selectedFilters, onFilterChange, onClose }) => {
   // Function to handle max value
   const handleMaxInputChange = (e) => {
     const maxValue = parseInt(e.target.value, 10);
-    setPriceRange((prev) => ({ ...prev, min: maxValue }));
+    setPriceRange((prev) => ({ ...prev, max: maxValue }));
   };
 
   // Function to handle applying filters
