@@ -31,6 +31,7 @@ import MyBookings from "./Components/Mybookings/MyBookings";
 import BookingDetails from "./Components/Mybookings/BookingDetails";
 import AccomodationForm from "./Components/Accomodation/AccomodationForm";
 import Accomodation from "./Components/Accomodation/Accomodation";
+
 function App() {
   const stripePromise = loadStripe(
     "pk_live_51P1rh0SJdUGgg8HEAtfiByUJLh4JgOEVIgXPk7VRJE3Wdec1nSNwQ5bBQ3NDcuQ5DwHYHjGRt4bHfpe48vStkPT900WRcpkcao"
