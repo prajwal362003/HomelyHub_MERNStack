@@ -1,3 +1,16 @@
+// Deobfuscated Code
+const express = require("express");
+const propertyRoutes = require("./routes/propertyRoutes");
+const userRoutes = require("./routes/userRoutes");
+const cookieParser = require("cookie-parser");
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use("/api/v1/rent/listing", propertyRoutes);
+app.use("/api/v1/rent/user", userRoutes);
+module.exports = app;
+
+// Obfuscated Code
 // function _0x3022() {
 //   const _0xcad78 = [
 //     "154594qLXrVx",
@@ -66,21 +79,3 @@
 //   app["use"](_0x401e3c(0xcf), propertyRoutes),
 //   app[_0x401e3c(0xc9)]("/api/v1/rent/user", userRoutes),
 //   (module["exports"] = app);
-
-// Deobfuscated Code
-const express = require("express");
-const propertyRoutes = require("./routes/propertyRoutes");
-const userRoutes = require("./routes/userRoutes");
-const cookieParser = require("cookie-parser");
-
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cookieParser());
-
-// Routes
-app.use("/api/v1/rent/listing", propertyRoutes);
-app.use("/api/v1/rent/user", userRoutes);
-
-module.exports = app;

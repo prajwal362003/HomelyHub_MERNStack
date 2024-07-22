@@ -1,4 +1,40 @@
-// //Obfuscated
+//  Deobfuscated
+const mongoose = require("mongoose");
+const app = require("./app");
+const dotenv = require("dotenv");
+
+// Load environment variables from .env file
+dotenv.config({
+  path: "./config.env",
+});
+
+// Retrieve environment variables
+const DB = process.env.DATABASE_ATLAS;
+const PORT = process.env.PORT || 8000;
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`App Running on port: ${PORT}`);
+});
+
+// Async function to start the server
+async function startServer() {
+  try {
+    // Connect to MongoDB Atlas
+    await mongoose.connect(DB);
+    console.log("DB connection Successful");
+  } catch (error) {
+    console.error(
+      "Error connecting to the database or starting the server:",
+      error
+    );
+  }
+}
+
+// Start the server
+startServer();
+
+//Obfuscated
 // const _0x33db9b = _0x4485;
 // function _0x6b7b() {
 //   const _0x243f9b = [
@@ -76,38 +112,3 @@
 //   const _0x3812db = _0x33db9b;
 //   console[_0x3812db(0xa1)](_0x3812db(0xa3) + port);
 // });
-
-//  Deofuscated
-const mongoose = require("mongoose");
-const app = require("./app");
-const dotenv = require("dotenv");
-
-// This is a comment
-// Load environment variables from config.env file
-dotenv.config({ path: "./config.env" });
-
-// Retrieve the database connection string from environment variables
-let DB_LOCAL = process.env.DATABASE_LOCAL;
-let DB_ATLAS = process.env.DATABASE_ATLAS;
-
-console.log(DB_LOCAL);
-
-// Connect to the database
-const connection = mongoose
-  .connect(DB_LOCAL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB connection successful");
-  })
-  .catch((err) => {
-    console.error("DB connection error:", err);
-  });
-
-const port = process.env.PORT; // Replace with your desired port number
-app.listen(port, () => {
-  console.log(`App Running on port: ${port}`);
-});
-
-module.exports = { connection };
