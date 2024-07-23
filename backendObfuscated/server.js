@@ -9,7 +9,7 @@ dotenv.config({
 });
 
 // Retrieve environment variables
-const DB = process.env.DATABASE_LOCAL;
+const DB = process.env.DATABASE_ATLAS;
 const PORT = process.env.PORT || 8000;
 
 // Start the server
