@@ -2,6 +2,7 @@
 const mongoose = require("mongoose");
 const app = require("./app");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 // Load environment variables from .env file
 dotenv.config({
@@ -12,6 +13,18 @@ dotenv.config({
 const DB = process.env.DATABASE_ATLAS;
 const PORT = process.env.PORT || 8000;
 
+// Configure CORS options
+const corsOptions = {
+  origin: "http://localhost:3000", // Needs to be updated
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
+
+// Use the CORS middleware
+app.use(cors(corsOptions));
+
+// Enable preflight requests for all routes
+app.options("*", cors(corsOptions));
 // Start the server
 app.listen(PORT, () => {
   console.log(`App Running on port: ${PORT}`);

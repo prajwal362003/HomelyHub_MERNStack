@@ -7,9 +7,12 @@ export const getAllProperties = () => async (dispatch, getState) => {
     dispatch(propertyAction.getRequest());
 
     const { searchParams } = getState().properties;
-    const response = await axios.get(`/api/v1/rent/listing`, {
-      params: { ...searchParams },
-    });
+    const response = await axios.get(
+      `https://homelyhub-backend-cmes.onrender.com/api/v1/rent/listing`,
+      {
+        params: { ...searchParams },
+      }
+    );
 
     console.log(response);
     if (!response) {

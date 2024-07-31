@@ -7,7 +7,7 @@ export const createAccomodation = (accomodationData) => async (dispatch) => {
     dispatch(accomodationActions.getAccomodationRequest());
     // creating  a new accommodation by sending post request to the server with data in JSON format
     const response = await axios.post(
-      "/api/v1/rent/user/newAccommodation",
+      "https://homelyhub-backend-cmes.onrender.com/api/v1/rent/user/newAccommodation",
       accomodationData
     );
     if (!response) {
@@ -22,7 +22,9 @@ export const getAllAccomodation = () => async (dispatch) => {
   try {
     dispatch(accomodationActions.getAccomodationRequest());
     // get request to fetch all the accomodation data
-    const { data } = await axios.get("/api/v1/rent/user/myAccommodation");
+    const { data } = await axios.get(
+      "https://homelyhub-backend-cmes.onrender.com/api/v1/rent/user/myAccommodation"
+    );
     const accom = data.data;
     dispatch(accomodationActions.getAccomodation(accom));
   } catch (e) {
